@@ -1,0 +1,32 @@
+{
+  "name": "rePubsub",
+  "version": "0.0.1",
+  "dependencies": {
+    "pubsub-js": "^1.5.3",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  },
+  "description": "pubsub data flow for react",
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhou-yg/resub.git"
+  },
+  "keywords": [
+    "pubsub",
+    "data",
+    "flow"
+  ],
+  "author": "zhouyg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhou-yg/resub/issues"
+  },
+  "homepage": "https://github.com/zhou-yg/resub#readme"
+}
