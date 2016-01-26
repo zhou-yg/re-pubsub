@@ -1,5 +1,5 @@
 {
-  "name": "rePubsub",
+  "name": "re-pubsub",
   "version": "0.0.1",
   "dependencies": {
     "pubsub-js": "^1.5.3",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhou-yg/resub.git"
+    "url": "git+https://github.com/zhou-yg/re-pubsub.git"
   },
   "keywords": [
     "pubsub",
@@ -26,7 +26,7 @@
   "author": "zhouyg",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zhou-yg/resub/issues"
+    "url": "https://github.com/zhou-yg/re-pubsub/issues"
   },
-  "homepage": "https://github.com/zhou-yg/resub#readme"
+  "homepage": "https://github.com/zhou-yg/re-pubsub#readme"
 }
