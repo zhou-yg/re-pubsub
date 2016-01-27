@@ -2,20 +2,28 @@
  * Created by zyg on 16/1/27.
  */
 import * as PubSub from 'pubsub-js'
+import {isFunction} from 'lodash'
 
 export default function bindNext(nexts = []){
 
   return function publish(topic,data){
 
-    nexts.reduce(function (init, next) {
-      return init.then(next);
-    },new Promise(function (resolve) {
-      resolve(data);
-    })).then(function (result) {
+    let result = nexts.reduce(function (init, next) {
 
-      PubSub.publish(topic,result);
-    }).catch(function (err) {
-      console.error(err);
-    });
+      if(init instanceof Promise){
+        return init.then(next)
+      }else{
+        return next(data);
+      }
+    },data);
+
+    if(result instanceof Promise){
+      result.then(function (data) {
+        PubSub.publish(topic,data)
+      })
+
+    }else{
+      PubSub.publish(topic,data)
+    }
   };
 }

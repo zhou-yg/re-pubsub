@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     t:[
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?reload=true',
       './test/t',
     ],
     're-pubsub':[

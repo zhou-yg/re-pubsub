@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
-import {storeConfigure,bindStore,bindNext} from '../../src/index.js'
+import {storeConfigure,bindStore,bindNext,bindDataToState} from '../../src/index.js'
 
 
 let store = storeConfigure({name:'a'});
@@ -8,12 +8,9 @@ let sub = bindStore(store);
 
 let publish = bindNext([
   function (a) {
-    console.log('next a',a);
-    return new Promise(function (resolve) {
-      resolve(Object.assign({
-        p:233,
-      },a))
-    })
+    return Object.assign({
+      p: 233,
+    }, a)
   }
 ]);
 
@@ -21,22 +18,33 @@ store.listen(function (d) {
   console.log('d:',d)
 });
 
+
+const bindData = function (target,name,descriptor) {
+  target.displayName = 'ZZZ';
+};
+
+
+@bindDataToState('hello')
 class Count extends Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {
+      hello:{
+        x:'init hello'
+      }
+    };
   }
 
   componentDidMount(){
-    sub('hello', (d)=> {
-      console.log(`hello ::::`,d);
-      this.setState(d)
-    });
+
+    console.log(this,'old');
   }
 
   render(){
     return (
-      <h2>{this.state.name} ::: {this.state.i}</h2>
+      <h2>
+      {this.state.hello.x}
+      </h2>
     )
   }
 }
@@ -45,19 +53,15 @@ class C extends Component {
 
   constructor(props){
     super(props);
-    this.name = 3;
+    this.name = 4;
   }
 
   componentDidMount(){
-    let i = 0;
-    setInterval(function () {
-      i=i+1;
-
+    setTimeout(function () {
       publish('hello',{
-        name:2222,
-        i
+        x:1
       })
-    },1000);
+    },2000)
   }
 
   render(){
@@ -68,7 +72,9 @@ class C extends Component {
       </div>
     )
   }
-
 }
+
+window.C = C;
+window.Count = Count;
 
 export default C;

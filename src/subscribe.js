@@ -3,17 +3,31 @@
  */
 import * as PubSub from 'pubsub-js'
 
+
+const subscribeCreator = function subscribeCreator(store,callback){
+
+  return function (topic,data) {
+
+    console.log(topic,data);
+
+    if (store) {
+      store.dispatch({
+        [topic]: data
+      });
+    }
+
+    callback(topic,data);
+  }
+}
+
 export default function bindStore(store){
 
  return function subscribe(topic,callback=_=>_) {
 
-   PubSub.subscribe(topic, function (topic, data) {
+   topic = [].concat(topic);
 
-     store.dispatch({
-       [topic]:data
-     });
-
-     callback(data);
-   });
+   topic.forEach(topic => {
+     PubSub.subscribe(topic, subscribeCreator(store,callback));
+   })
  }
 }
