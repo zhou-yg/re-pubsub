@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
-import {storeConfigure,bindStore,bindNext,bindDataToState} from '../../src/index.js'
+import {storeConfigure,bindStore,bindNext,bindTopicToState} from '../../src/index.js'
 
 
 let store = storeConfigure({name:'a'});
@@ -24,7 +24,7 @@ const bindData = function (target,name,descriptor) {
 };
 
 
-@bindDataToState('hello')
+@bindTopicToState('hello')
 class Count extends Component {
   constructor(props){
     super(props);

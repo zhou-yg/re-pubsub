@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     t:[
       'webpack-hot-middleware/client?reload=true',
-      './test/t',
+      './example/t',
     ],
     're-pubsub':[
       './src/index',
@@ -25,7 +25,10 @@ module.exports = {
     loaders: [{
       test: /\.jsx|\.js$/,
       loaders: ['babel'],
-      include: [path.join(__dirname, 'src'),path.join(__dirname, 'test')]
+      include: [
+        path.join(__dirname, 'src'),
+        path.join(__dirname, 'example')
+      ]
     }]
   }
 };

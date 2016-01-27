@@ -5,11 +5,11 @@
 import storeConfigure from './../src/storeConfigure'
 import bindStore from './../src/subscribe'
 import bindNext from './../src/publish'
-import bindDataToState from './bindDataToState'
+import bindTopicToState from './bindTopicToState'
 
 export {
   storeConfigure,
   bindStore,
   bindNext,
-  bindDataToState
+  bindTopicToState
 }
