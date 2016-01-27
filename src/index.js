@@ -2,12 +2,12 @@
 /**
  * Created by zyg on 16/1/26.
  */
-import C from './t'
-import React from 'react'
-import ReactDOM from 'react-dom'
+import storeConfigure from './../src/storeConfigure'
+import bindStore from './../src/subscribe'
+import bindNext from './../src/publish'
 
-ReactDOM.render(
-  <C></C>,
-  document.querySelector('#root')
-)
-
+export {
+  storeConfigure,
+  bindStore,
+  bindNext,
+}

@@ -3,13 +3,18 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    './src/index',
-  ],
+  entry: {
+    t:[
+      'webpack-hot-middleware/client',
+      './test/t',
+    ],
+    're-pubsub':[
+      './src/index',
+    ]
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 're-pubsub.js',
+    filename: '[name].js',
     publicPath: '/dist'
   },
   plugins: [
@@ -20,7 +25,7 @@ module.exports = {
     loaders: [{
       test: /\.jsx|\.js$/,
       loaders: ['babel'],
-      include: path.join(__dirname, 'src')
+      include: [path.join(__dirname, 'src'),path.join(__dirname, 'test')]
     }]
   }
 };
