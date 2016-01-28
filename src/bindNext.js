@@ -4,7 +4,20 @@
 import * as PubSub from 'pubsub-js'
 import {isFunction} from 'lodash'
 
-export default function bindNext(nexts = []){
+function bindStore (store) {
+
+  return function (topic, data) {
+    if(store){
+      store.dispatch({
+        [topic]:data
+      })
+    }
+  }
+}
+
+export default function bindNext(nexts = [],store){
+
+  const dispatch = bindStore(store);
 
   return function publish(topic,data){
 
@@ -19,11 +32,17 @@ export default function bindNext(nexts = []){
 
     if(result instanceof Promise){
       result.then(function (data) {
+
         PubSub.publish(topic,data)
+
+        dispatch(topic,data);
       })
 
     }else{
+
       PubSub.publish(topic,data)
+
+      dispatch(topic,data);
     }
   };
 }

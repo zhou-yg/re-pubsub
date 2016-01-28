@@ -1,11 +1,9 @@
 /**
  * Created by zyg on 16/1/26.
  */
-import * as
-PubSub
-from
-'pubsub-js'
+import * as PubSub from 'pubsub-js'
 
+import storeConfigure from './storeConfigure'
 
 const subscribeCreator = function subscribeCreator(store, callback) {
 

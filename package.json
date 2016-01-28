@@ -1,6 +1,6 @@
 {
   "name": "re-pubsub",
-  "version": "1.2.2",
+  "version": "1.4.2",
   "description": "pubsub data flow for react",
   "main": "src/index.js",
   "scripts": {
