@@ -3,8 +3,8 @@
  * Created by zyg on 16/1/26.
  */
 import storeConfigure from './../src/storeConfigure'
-import bindStore from './../src/subscribe'
-import bindNext from './../src/publish'
+import bindStore from './../src/bindStore'
+import bindNext from './../src/bindNext'
 import bindTopicToState from './bindTopicToState'
 
 export {
