@@ -1,10 +1,9 @@
 import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
-import {storeConfigure,bindStore,bindNext,bindTopicToState} from '../../src/index.js'
+import {storeConfigure,subscribe,bindNext,bindTopicToState} from '../../src/index.js'
 
 
-let store = storeConfigure({name:'a'});
-let sub = bindStore(store);
+let sub = subscribe;
 
 let publish = bindNext([
   function (a) {

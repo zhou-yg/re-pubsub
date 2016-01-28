@@ -4,7 +4,8 @@
   "description": "pubsub data flow for react",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build":"webpack --config webpack.config.product.js"
   },
   "repository": {
     "type": "git",

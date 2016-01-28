@@ -2,7 +2,7 @@
  * Created by zyg on 16/1/27.
  */
 import * as PubSub from 'pubsub-js'
-import bindStore from './subscribe'
+import subscribe from './subscribe'
 
 /**
  * bind a listen data update callback when `componentDidMount`
@@ -17,9 +17,7 @@ export default function bindDataToState(topic,funcName = 'componentDidMount' ){
 
     target.prototype[funcName] = function () {
 
-      bindStore()(topic,(triggerTopic,data) => {
-
-        console.log('triggerTopic',triggerTopic);
+      subscribe(topic,(triggerTopic,data) => {
 
         this.setState({
           [triggerTopic]:data
