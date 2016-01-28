@@ -2,7 +2,7 @@
  * Created by zyg on 16/1/27.
  */
 import * as PubSub from 'pubsub-js'
-import {isFunction} from 'lodash'
+import {isFunction,isPlainObject} from 'lodash'
 
 function bindStore (store) {
 
@@ -16,6 +16,11 @@ function bindStore (store) {
 }
 
 export default function bindNext(nexts = [],store){
+
+  if(isPlainObject(nexts)){
+    store = nexts;
+    nexts = [];
+  }
 
   const dispatch = bindStore(store);
 
